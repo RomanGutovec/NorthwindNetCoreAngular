@@ -1,14 +1,12 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Categories.Queries;
 using Application.Common.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace Application.Products.Queries.ProductsList
 {
@@ -16,18 +14,22 @@ namespace Application.Products.Queries.ProductsList
     {
         private readonly IMapper _mapper;
         private readonly INorthwindDbContext _dbContext;
+        private readonly IConfiguration _configuration;
 
-        public GetProductsListQueryHandler(IMapper mapper, INorthwindDbContext dbContext)
+        public GetProductsListQueryHandler(IMapper mapper, INorthwindDbContext dbContext, IConfiguration configuration)
         {
             _mapper = mapper;
             _dbContext = dbContext;
+            _configuration = configuration;
         }
         public async Task<ProductsListViewModel> Handle(GetProductsListQuery request, CancellationToken cancellationToken)
         {
+            var amountProductsToGet = _configuration.GetValue("NorthwindVariables:ProductsAmount", 0);
             var products = await _dbContext.Products.ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
-
-            return new ProductsListViewModel { Products = products };
+            var filteredProducts = amountProductsToGet == 0 ? products : products.Take(amountProductsToGet).ToList();
+            
+            return new ProductsListViewModel { Products = filteredProducts };
         }
     }
 }
