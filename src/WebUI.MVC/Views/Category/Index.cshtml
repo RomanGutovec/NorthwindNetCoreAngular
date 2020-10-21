@@ -1,0 +1,39 @@
+﻿@model Application.Categories.Queries.CategoriesListViewModel
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories list</h1>
+
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=> model.Categories[0].Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories[0].Description)
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Categories) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
