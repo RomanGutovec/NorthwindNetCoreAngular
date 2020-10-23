@@ -1,4 +1,5 @@
-﻿using Application.Products.Queries;
+﻿using Application.Products.Commands.CreateProduct;
+using Application.Products.Queries;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -13,7 +14,9 @@ namespace Application.Common.Mapping
         {
             CreateMap<Product, ProductDto>()
                 .ForMember(p => p.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
-                .ForMember(p => p.SupplierName, opt => opt.MapFrom(src => src.Supplier.ContactName));
+                .ForMember(p => p.SupplierCompanyName, opt => opt.MapFrom(src => src.Supplier.CompanyName));
+
+            CreateMap<CreateProductCommand, Product>();
         }
     }
 }

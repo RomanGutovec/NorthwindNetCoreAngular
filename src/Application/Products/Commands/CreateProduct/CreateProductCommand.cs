@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MediatR;
 
-namespace Application.Products.Queries
+namespace Application.Products.Commands.CreateProduct
 {
-    public class ProductDto
+    public class CreateProductCommand : IRequest<int>
     {
-        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string QuantityPerUnit { get; set; }
         public decimal? UnitPrice { get; set; }
@@ -15,8 +15,6 @@ namespace Application.Products.Queries
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
         public int? CategoryId { get; set; }
-        public string CategoryName { get; set; }
         public int? SupplierId { get; set; }
-        public string SupplierCompanyName { get; set; }
     }
 }

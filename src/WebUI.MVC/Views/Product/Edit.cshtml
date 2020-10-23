@@ -1,0 +1,58 @@
+﻿@model Application.Products.Commands.UpdateProduct.UpdateProductCommand
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit product</h1>
+
+<div class="row">
+    <div class="col-md-4 offset-2">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="ProductId" />
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label">Product name</label>
+                <input asp-for="ProductName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">Category</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SupplierId" class="control-label">Supplier</label>
+                <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Suppliers"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantityPerUnit" class="control-label">Quantity per unit</label>
+                <input asp-for="QuantityPerUnit" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitPrice" class="control-label">Unit price</label>
+                <input asp-for="UnitPrice" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitsInStock" class="control-label">Units in stock</label>
+                <input asp-for="UnitsInStock" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitsOnOrder" class="control-label">Units on order</label>
+                <input asp-for="UnitsOnOrder" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ReorderLevel" class="control-label">Reorder level</label>
+                <input asp-for="ReorderLevel" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="checkbox" asp-for="Discontinued">
+                <label asp-for="Discontinued">Discontinued</label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

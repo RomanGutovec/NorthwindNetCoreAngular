@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Application;
+using Application.Products.Commands.UpdateProduct;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -14,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure.Persistence;
+using Newtonsoft.Json.Serialization;
 
 namespace WebUI.MVC
 {
@@ -31,7 +34,16 @@ namespace WebUI.MVC
         {
             services.AddNorthwindPersistence(Configuration);
             services.AddNorthwindApplication();
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddMvc(setup =>
+            {
+                
+            }).AddNewtonsoftJson(options =>
+                options.SerializerSettings.ContractResolver =
+                    new CamelCasePropertyNamesContractResolver());
+
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
 

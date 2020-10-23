@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Products.Queries
+namespace Application.Products.Commands.UpdateProduct
 {
-    public class ProductDto
+    public class UpdateProductCommand : IRequest
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
@@ -15,8 +16,6 @@ namespace Application.Products.Queries
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
         public int? CategoryId { get; set; }
-        public string CategoryName { get; set; }
         public int? SupplierId { get; set; }
-        public string SupplierCompanyName { get; set; }
     }
 }

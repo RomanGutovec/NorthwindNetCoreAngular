@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="8.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
@@ -19,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Categories\Commands\" />
     <Folder Include="Categories\Queries\CategoryDetail\" />
-    <Folder Include="Products\Commands\" />
     <Folder Include="Products\Queries\ProductDetail\" />
   </ItemGroup>
 

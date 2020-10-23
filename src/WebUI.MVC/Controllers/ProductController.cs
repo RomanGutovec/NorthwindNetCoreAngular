@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Categories.Queries;
+using Application.Products.Commands.CreateProduct;
+using Application.Products.Commands.UpdateProduct;
 using Application.Products.Queries.ProductsList;
+using Application.Suppliers;
+using Application.Suppliers.Queries.SuppliersList;
+using Domain.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using WebUI.MVC.Helpers;
+using WebUI.MVC.Models;
 
 namespace WebUI.MVC.Controllers
 {
@@ -23,6 +33,71 @@ namespace WebUI.MVC.Controllers
         {
             var products = await _mediator.Send(new GetProductsListQuery());
             return View(products);
+        }
+
+        // GET: Products/Edit/5
+        public async Task<IActionResult> Create()
+        {
+            await SetUpSelectLists();
+
+            return View(new CreateProductCommand());
+        }
+
+        // POST: Products/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateProductCommand createProduct)
+        {
+            if (!ModelState.IsValid) {
+
+                return BadRequest(ModelState);
+            }
+
+            try {
+                await _mediator.Send(createProduct);
+                TempData.Put("UserMessage", new MessageViewModel { Title = "Success", CssClassName = "alert-success", Message = "Operation done" });
+            } catch (ValidationException) {
+                TempData.Put("UserMessage", new MessageViewModel { Title = "Error", CssClassName = "alert alert-warning", Message = "Operation failed" });
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Products/Edit/5
+        public async Task<IActionResult> Edit(int id)
+        {
+            await SetUpSelectLists();
+
+            return View(new UpdateProductCommand { ProductId = id });
+        }
+
+        // POST: Products/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, UpdateProductCommand updateProduct)
+        {
+            if (!ModelState.IsValid || id != updateProduct.ProductId) {
+
+                return BadRequest(ModelState);
+            }
+
+            try {
+                await _mediator.Send(updateProduct);
+                TempData.Put("UserMessage", new MessageViewModel { Title = "Success", CssClassName = "alert-success", Message = "Operation done" });
+            } catch (ValidationException) {
+                TempData.Put("UserMessage", new MessageViewModel { Title = "Error", CssClassName = "alert alert-warning", Message = "Operation failed" });
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task SetUpSelectLists()
+        {
+            //do we need somehow set viewmodel using some service or it's ok
+            var categories = await _mediator.Send(new GetCategoriesListQuery());
+            var suppliers = await _mediator.Send(new GetSuppliersListQuery());
+            ViewBag.Categories = new SelectList(categories.Categories, nameof(CategoryDto.Id), nameof(CategoryDto.Description));
+            ViewBag.Suppliers = new SelectList(suppliers.Suppliers, nameof(SupplierDto.Id), nameof(SupplierDto.CompanyName));
         }
     }
 }
