@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 using Northwind.Persistence;
 
 namespace WebUI.MVC
@@ -20,24 +22,29 @@ namespace WebUI.MVC
     {
         public async static Task Main(string[] args)
         {
+            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            logger.Info(Directory.GetCurrentDirectory());
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
 
-                try {
+                try
+                {
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var northwindContext = services.GetRequiredService<NorthwindDbContext>();
-                    if (northwindContext.Database.IsSqlServer()) {
+                    if (northwindContext.Database.IsSqlServer())
+                    {
                         northwindContext.Database.Migrate();
                     }
 
                     var seeder = new NorthwindDbContextSeeder(northwindContext, userManager);
                     await seeder.SeedAllAsync(CancellationToken.None);
 
-                } catch (Exception ex) {
-                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, "An error occurred while migrating or initializing the database.");
                     throw;
                 }
             }
@@ -50,6 +57,11 @@ namespace WebUI.MVC
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Information);
+                }).UseNLog();
     }
 }
