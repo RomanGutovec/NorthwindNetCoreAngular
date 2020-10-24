@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure.Persistence;
 using Newtonsoft.Json.Serialization;
+using FluentValidation.AspNetCore;
 
 namespace WebUI.MVC
 {
@@ -40,7 +41,7 @@ namespace WebUI.MVC
                 
             }).AddNewtonsoftJson(options =>
                 options.SerializerSettings.ContractResolver =
-                    new CamelCasePropertyNamesContractResolver());
+                    new CamelCasePropertyNamesContractResolver()).AddFluentValidation();
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
