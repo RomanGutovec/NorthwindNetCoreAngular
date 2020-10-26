@@ -1,23 +1,22 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Exceptions;
 using Domain.Entities;
+using AutoMapper;
 
 namespace Application.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand>
     {
         private readonly INorthwindDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public UpdateProductCommandHandler(INorthwindDbContext dbContext)
+        public UpdateProductCommandHandler(INorthwindDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
@@ -28,16 +27,7 @@ namespace Application.Products.Commands.UpdateProduct
                 throw new NotFoundException(nameof(Product), request.ProductId);
             }
 
-            entity.ProductId = request.ProductId;
-            entity.ProductName = request.ProductName;
-            entity.QuantityPerUnit = request.QuantityPerUnit;
-            entity.UnitPrice = request.UnitPrice;
-            entity.UnitsInStock = request.UnitsInStock;
-            entity.UnitsOnOrder = request.UnitsOnOrder;
-            entity.ReorderLevel = request.ReorderLevel;
-            entity.Discontinued = request.Discontinued;
-            entity.CategoryId = request.CategoryId;
-            entity.SupplierId = request.SupplierId;
+            _mapper.Map(request, entity);
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

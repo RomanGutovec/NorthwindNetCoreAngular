@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Entities;
-
-namespace Application.Categories.Queries
+﻿namespace Application.Categories.Queries
 {
     public class CategoryDto
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Categories.Queries;
+﻿using Application.Categories.Queries;
 using AutoMapper;
 using Domain.Entities;
 

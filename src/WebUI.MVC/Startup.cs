@@ -1,18 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using Application;
-using Application.Products.Commands.UpdateProduct;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
-using WebUI.MVC.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,17 +10,17 @@ using Infrastructure.Persistence;
 using Newtonsoft.Json.Serialization;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Logging;
+using Application.Common.Interfaces;
+using WebUI.MVC.Common;
+using Microsoft.AspNetCore.Http;
 
 namespace WebUI.MVC
 {
     public class Startup
     {
-        private readonly ILogger<Startup> _logger;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //_logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -40,8 +30,7 @@ namespace WebUI.MVC
         {
             services.AddNorthwindPersistence(Configuration);
             services.AddNorthwindApplication();
-
-            //logger.LogInformation(string.Join(Environment.NewLine, Configuration.AsEnumerable().Select((k, v) => $"{k.Key} - {k.Value}")));
+            services.AddScoped<INorthwindConfig, NorthwindWebConfig>();
 
             services.AddMvc(setup =>
             {

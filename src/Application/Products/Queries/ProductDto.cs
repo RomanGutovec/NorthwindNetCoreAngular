@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Application.Products.Queries
+﻿namespace Application.Products.Queries
 {
     public class ProductDto
     {

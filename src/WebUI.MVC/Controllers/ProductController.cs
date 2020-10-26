@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Application.Categories.Queries;
+using Application.Common.Interfaces;
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.UpdateProduct;
 using Application.Products.Queries.ProductsList;
 using Application.Suppliers;
 using Application.Suppliers.Queries.SuppliersList;
-using Domain.Entities;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.MVC.Helpers;
@@ -22,15 +18,18 @@ namespace WebUI.MVC.Controllers
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly INorthwindConfig _northwindConfig;
 
-        public ProductController(IMediator mediator)
+        public ProductController(IMediator mediator, INorthwindConfig northwindConfig)
         {
             _mediator = mediator;
+            _northwindConfig = northwindConfig;
         }
 
         // GET: ProductController
-        public async Task<ActionResult<ProductsListViewModel>> Index()
+        public async Task<ActionResult<ProductsListViewModel>> Index(int id = 0)
         {
+            _northwindConfig.AmountOfProductsFromQuery = id;
             var products = await _mediator.Send(new GetProductsListQuery());
             return View(products);
         }
@@ -93,7 +92,6 @@ namespace WebUI.MVC.Controllers
 
         private async Task SetUpSelectLists()
         {
-            //do we need somehow set viewmodel using some service or it's ok
             var categories = await _mediator.Send(new GetCategoriesListQuery());
             var suppliers = await _mediator.Send(new GetSuppliersListQuery());
             ViewBag.Categories = new SelectList(categories.Categories, nameof(CategoryDto.Id), nameof(CategoryDto.Description));

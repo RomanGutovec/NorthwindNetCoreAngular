@@ -1,10 +1,8 @@
 ﻿using Application.Products.Commands.CreateProduct;
+using Application.Products.Commands.UpdateProduct;
 using Application.Products.Queries;
 using AutoMapper;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Common.Mapping
 {
@@ -14,9 +12,11 @@ namespace Application.Common.Mapping
         {
             CreateMap<Product, ProductDto>()
                 .ForMember(p => p.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
-                .ForMember(p => p.SupplierCompanyName, opt => opt.MapFrom(src => src.Supplier.CompanyName));
+                .ForMember(p => p.SupplierCompanyName, opt => opt.MapFrom(src => src.Supplier.CompanyName))
+                .ReverseMap();
 
-            CreateMap<CreateProductCommand, Product>();
+            CreateMap<CreateProductCommand, Product>().ReverseMap();
+            CreateMap<UpdateProductCommand, Product>().ReverseMap();
         }
     }
 }
