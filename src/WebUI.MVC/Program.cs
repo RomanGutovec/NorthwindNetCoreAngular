@@ -7,6 +7,7 @@ using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -26,21 +27,17 @@ namespace WebUI.MVC
             using (var scope = host.Services.CreateScope()) {
                 var services = scope.ServiceProvider;
 
-                try
-                {
+                try {
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var northwindContext = services.GetRequiredService<NorthwindDbContext>();
-                    if (northwindContext.Database.IsSqlServer())
-                    {
-                        northwindContext.Database.Migrate();
+                    
+                    if (northwindContext.Database.IsSqlServer() && !await northwindContext.Database.CanConnectAsync()) {
+                        await northwindContext.Database.MigrateAsync();
+                        var seeder = new NorthwindDbContextSeeder(northwindContext, userManager);
+                        await seeder.SeedAllAsync(CancellationToken.None);
                     }
 
-                    var seeder = new NorthwindDbContextSeeder(northwindContext, userManager);
-                    await seeder.SeedAllAsync(CancellationToken.None);
-
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     logger.Error(ex, "An error occurred while migrating or initializing the database.");
                     throw;
                 }
