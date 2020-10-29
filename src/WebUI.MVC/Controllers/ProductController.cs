@@ -27,7 +27,7 @@ namespace WebUI.MVC.Controllers
         }
 
         // GET: ProductController
-        public async Task<ActionResult<ProductsListViewModel>> Index(int id = 0)
+        public async Task<IActionResult> Index(int id = 0)
         {
             _northwindConfig.AmountOfProductsFromQuery = id;
             var products = await _mediator.Send(new GetProductsListQuery());

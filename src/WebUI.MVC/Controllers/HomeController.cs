@@ -28,7 +28,7 @@ namespace WebUI.MVC.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            var error = this.HttpContext.Features.Get<IExceptionHandlerFeature>().Error;
+            var error = HttpContext.Features.Get<IExceptionHandlerFeature>().Error;
             _logger.LogError("Something went wrong", error);
             
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

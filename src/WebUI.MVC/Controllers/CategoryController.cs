@@ -15,7 +15,7 @@ namespace WebUI.MVC.Controllers
         }
 
         // GET: CategoryController
-        public async Task<ActionResult<CategoriesListViewModel>> Index()
+        public async Task<IActionResult> Index()
         {
             var categories =await _mediator.Send(new GetCategoriesListQuery());
             return View(categories);
