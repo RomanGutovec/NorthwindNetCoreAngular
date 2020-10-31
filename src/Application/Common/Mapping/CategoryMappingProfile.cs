@@ -1,4 +1,6 @@
-﻿using Application.Categories.Queries;
+﻿using Application.Categories.Commands.UpdateCategory;
+using Application.Categories.Queries;
+using Application.Categories.Queries.CategoryDetail;
 using AutoMapper;
 using Domain.Entities;
 
@@ -14,6 +16,10 @@ namespace Application.Common.Mapping
                     opt => opt.MapFrom(src => src.CategoryId))
                 .ForMember(c => c.Name,
                     opt => opt.MapFrom(src => src.CategoryName));
+            CreateMap<Category, CategoryDetailViewModel>()
+                .ForMember(c => c.Id,
+                    opt => opt.MapFrom(src => src.CategoryId));
+            CreateMap<UpdateCategoryCommand, Category>();
         }
     }
 }

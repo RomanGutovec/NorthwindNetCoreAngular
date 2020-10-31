@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
+using Application.Categories.Commands.UpdateCategory;
 using Application.Categories.Queries;
+using Application.Categories.Queries.CategoryDetail;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.MVC.Controllers
@@ -17,8 +21,47 @@ namespace WebUI.MVC.Controllers
         // GET: CategoryController
         public async Task<IActionResult> Index()
         {
-            var categories =await _mediator.Send(new GetCategoriesListQuery());
+            var categories = await _mediator.Send(new GetCategoriesListQuery());
             return View(categories);
+        }
+
+        [HttpGet]
+        public async Task<FileContentResult> GetImage(int id)
+        {
+            var categoryDetail = await _mediator.Send(new GetCategoryDetailQuery { Id = id });
+
+            return File(categoryDetail.Picture, "image/png");
+        }
+
+        [HttpGet]
+        public IActionResult Images(int id)
+        {
+            return View("CategoryImageEdit", id);
+            
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Images(int categoryId, IFormFile uploadedFile)
+        {
+
+            var categoryToUpdate = new UpdateCategoryCommand();
+            categoryToUpdate.Id = categoryId;
+
+            await using (var memoryStream = new MemoryStream()) {
+                await uploadedFile.CopyToAsync(memoryStream);
+
+                if (memoryStream.Length < 2097152) {
+                    categoryToUpdate.Picture = new byte[memoryStream.Length];
+                    memoryStream.ToArray().CopyTo(categoryToUpdate.Picture, 0);
+
+                    await _mediator.Send(categoryToUpdate);
+
+                } else {
+                    ModelState.AddModelError("File", "The file is too large.");
+                }
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
