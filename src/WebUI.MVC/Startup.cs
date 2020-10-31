@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Application.Common.Interfaces;
 using WebUI.MVC.Common;
 using Microsoft.AspNetCore.Http;
+using Domain.Entities;
+using WebUI.MVC.Controllers;
 
 namespace WebUI.MVC
 {
@@ -51,7 +53,7 @@ namespace WebUI.MVC
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-            } else if(env.IsStaging()){
+            } else if (env.IsStaging()) {
                 app.UseExceptionHandler("/Error");
             } else {
                 app.UseExceptionHandler("/Home/Error");
@@ -71,6 +73,14 @@ namespace WebUI.MVC
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "images",
+                    pattern: "images/{id}",
+                    defaults: new
+                    {
+                        controller = "Category",
+                        action = nameof(CategoryController.GetImage)
+                    });
                 endpoints.MapRazorPages();
             });
         }
