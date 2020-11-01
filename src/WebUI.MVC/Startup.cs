@@ -15,6 +15,7 @@ using WebUI.MVC.Common;
 using Microsoft.AspNetCore.Http;
 using Domain.Entities;
 using WebUI.MVC.Controllers;
+using WebUI.MVC.Middlewares;
 
 namespace WebUI.MVC
 {
@@ -60,6 +61,7 @@ namespace WebUI.MVC
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseMiddleware<ImageCachingMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
