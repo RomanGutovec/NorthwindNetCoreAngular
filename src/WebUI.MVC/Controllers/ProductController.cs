@@ -1,11 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Application.Categories.Queries;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.UpdateProduct;
+using Application.Products.Queries.ProductDetail;
 using Application.Products.Queries.ProductsList;
 using Application.Suppliers;
 using Application.Suppliers.Queries.SuppliersList;
+using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,17 +23,20 @@ namespace WebUI.MVC.Controllers
     {
         private readonly IMediator _mediator;
         private readonly INorthwindConfig _northwindConfig;
+        private readonly IMapper _mapper;
 
-        public ProductController(IMediator mediator, INorthwindConfig northwindConfig)
+
+        public ProductController(IMediator mediator, INorthwindConfig northwindConfig, IMapper mapper)
         {
             _mediator = mediator;
             _northwindConfig = northwindConfig;
+            _mapper = mapper;
         }
 
         // GET: ProductController
-        public async Task<IActionResult> Index(int id = 0)
+        public async Task<IActionResult> Index([FromQuery] int maxCount = 0)
         {
-            _northwindConfig.AmountOfProductsFromQuery = id;
+            _northwindConfig.AmountOfProductsFromQuery = maxCount;
             var products = await _mediator.Send(new GetProductsListQuery());
             return View(products);
         }
@@ -65,9 +72,17 @@ namespace WebUI.MVC.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            await SetUpSelectLists();
+            var productToUpdateCommand = new UpdateProductCommand();
+            try {
+                var productDetail = await _mediator.Send(new GetProductDetailQuery { ProductId = id });
+                _mapper.Map(productDetail, productToUpdateCommand);
+            } catch (NotFoundException) {
+                return View("ProductNotFound", id);
+            }
 
-            return View(new UpdateProductCommand { ProductId = id });
+            await SetUpSelectLists(productToUpdateCommand.CategoryId, productToUpdateCommand.SupplierId);
+
+            return View(productToUpdateCommand);
         }
 
         // POST: Products/Edit/5
@@ -90,12 +105,16 @@ namespace WebUI.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task SetUpSelectLists()
+        private async Task SetUpSelectLists(int? selectedCategoryId = null, int? selectedSupplierId = null)
         {
             var categories = await _mediator.Send(new GetCategoriesListQuery());
             var suppliers = await _mediator.Send(new GetSuppliersListQuery());
-            ViewBag.Categories = new SelectList(categories.Categories, nameof(CategoryDto.Id), nameof(CategoryDto.Description));
-            ViewBag.Suppliers = new SelectList(suppliers.Suppliers, nameof(SupplierDto.Id), nameof(SupplierDto.CompanyName));
+            ViewBag.Categories = new SelectList(categories.Categories, nameof(CategoryDto.Id),
+                nameof(CategoryDto.Description),
+                selectedValue: categories.Categories.Where(x => x.Id == selectedCategoryId));
+            ViewBag.Suppliers = new SelectList(suppliers.Suppliers, nameof(SupplierDto.Id),
+                nameof(SupplierDto.CompanyName),
+                selectedValue: suppliers.Suppliers.Where(x => x.Id == selectedSupplierId));
         }
     }
 }

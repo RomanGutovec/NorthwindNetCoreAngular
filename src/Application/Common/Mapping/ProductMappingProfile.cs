@@ -1,6 +1,7 @@
 ﻿using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.UpdateProduct;
 using Application.Products.Queries;
+using Application.Products.Queries.ProductDetail;
 using AutoMapper;
 using Domain.Entities;
 
@@ -17,6 +18,8 @@ namespace Application.Common.Mapping
 
             CreateMap<CreateProductCommand, Product>().ReverseMap();
             CreateMap<UpdateProductCommand, Product>().ReverseMap();
+            CreateMap<Product, ProductDetailViewModel>();
+            CreateMap<ProductDetailViewModel, UpdateProductCommand>();
         }
     }
 }
