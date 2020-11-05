@@ -1,12 +1,12 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Application.Categories.Queries
+namespace Application.Categories.Queries.CategoriesList
 {
     public class GetCategoriesListQueryHandler : IRequestHandler<GetCategoriesListQuery, CategoriesListViewModel>
     {

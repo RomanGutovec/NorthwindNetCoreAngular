@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace WebUI.MVC.Common
 {

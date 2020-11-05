@@ -10,10 +10,10 @@ namespace WebUI.MVC.Middlewares
         public const string DefaultFolder = "images";
 
         public ImageCachingOptions()
-            : this("images", 50, new TimeSpan(0, 20, 0))
+            : this("images", 50, new TimeSpan(0, 20, 0),7)
         { }
 
-        public ImageCachingOptions(string folder, short maxCount, TimeSpan expirationTime)
+        public ImageCachingOptions(string folder, short maxCount, TimeSpan expirationTime, int daysForFullCleanUp)
         {
             Path = folder ?? DefaultFolder;
             MaxCount = maxCount;
@@ -23,5 +23,6 @@ namespace WebUI.MVC.Middlewares
         public string Path { get; set; }
         public int MaxCount { get; set; }
         public TimeSpan ExpirationTime { get; set; }
+        public int DaysForFullCleanUp { get; set; }
     }
 }

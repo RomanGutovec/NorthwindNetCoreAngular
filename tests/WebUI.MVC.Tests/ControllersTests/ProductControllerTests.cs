@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Categories.Queries;
+using Application.Categories.Queries.CategoriesList;
 using Application.Common.Interfaces;
 using Application.Products.Commands.CreateProduct;
 using Application.Products.Commands.UpdateProduct;
@@ -9,6 +10,7 @@ using Application.Products.Queries;
 using Application.Products.Queries.ProductsList;
 using Application.Suppliers;
 using Application.Suppliers.Queries.SuppliersList;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,7 @@ namespace WebUI.MVC.Tests
     {
         private readonly Mock<IMediator> _mediatorMock;
         private readonly Mock<INorthwindConfig> _configMock;
+        private readonly Mock<IMapper> _mapperMock;
 
         public ProductControllerTests()
         {
@@ -33,13 +36,14 @@ namespace WebUI.MVC.Tests
             _configMock = new Mock<INorthwindConfig>();
             _configMock.Setup(c => c.AmountOfProducts)
                 .Returns(10);
+            _mapperMock = new Mock<IMapper>();
         }
 
         [Fact]
         public async Task Index_ReturnsAViewResult_WithAListOfProducts()
         {
             //Arrange
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object);
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object);
 
             //Act
             var result = await controller.Index();
@@ -59,7 +63,7 @@ namespace WebUI.MVC.Tests
                 .Returns(GetTestCategories());
             _mediatorMock.Setup(m => m.Send(It.IsAny<GetSuppliersListQuery>(), It.IsAny<CancellationToken>()))
                 .Returns(GetTestSuppliers());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object);
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object);
 
             //Act
             var result = await controller.Create();
@@ -83,7 +87,7 @@ namespace WebUI.MVC.Tests
             //Arrange
             var httpContext = new DefaultHttpContext();
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object) {
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object) {
                 TempData = tempData
             };
 
@@ -102,7 +106,7 @@ namespace WebUI.MVC.Tests
             //Arrange
             var httpContext = new DefaultHttpContext();
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object) {
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object) {
                 TempData = tempData
             };
 
@@ -125,7 +129,7 @@ namespace WebUI.MVC.Tests
                 .Returns(GetTestCategories());
             _mediatorMock.Setup(m => m.Send(It.IsAny<GetSuppliersListQuery>(), It.IsAny<CancellationToken>()))
                 .Returns(GetTestSuppliers());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object);
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object);
             var id = 5;
 
             //Act
@@ -133,7 +137,7 @@ namespace WebUI.MVC.Tests
 
             //Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsAssignableFrom<UpdateProductCommand>(viewResult.ViewData.Model);
+            Assert.IsAssignableFrom<UpdateProductCommand>(viewResult.ViewData.Model);
             _mediatorMock.Verify(mocks => mocks.Send(It.IsAny<GetProductsListQuery>(), It.IsAny<CancellationToken>()), Times.Never);
             _mediatorMock.Verify(mocks => mocks.Send(It.IsAny<GetCategoriesListQuery>(), It.IsAny<CancellationToken>()), Times.Once);
             _mediatorMock.Verify(mocks => mocks.Send(It.IsAny<GetSuppliersListQuery>(), It.IsAny<CancellationToken>()), Times.Once);
@@ -141,7 +145,6 @@ namespace WebUI.MVC.Tests
             var suppliersCount = ((IList<SupplierDto>)((SelectList)viewResult.ViewData["Suppliers"]).Items).Count;
             Assert.Equal(2, categoriesCount);
             Assert.Equal(3, suppliersCount);
-            Assert.Equal(id, model.ProductId);
         }
 
 
@@ -151,7 +154,7 @@ namespace WebUI.MVC.Tests
             //Arrange
             var httpContext = new DefaultHttpContext();
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object) {
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object) {
                 TempData = tempData
             };
             var id = 6;
@@ -171,7 +174,7 @@ namespace WebUI.MVC.Tests
             //Arrange
             var httpContext = new DefaultHttpContext();
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            var controller = new ProductController(_mediatorMock.Object, _configMock.Object) {
+            var controller = new ProductController(_mediatorMock.Object, _configMock.Object, _mapperMock.Object) {
                 TempData = tempData
             };
             var id = 11;

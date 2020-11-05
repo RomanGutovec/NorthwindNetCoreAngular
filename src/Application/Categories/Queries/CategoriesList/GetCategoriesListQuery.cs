@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Categories.Queries
+namespace Application.Categories.Queries.CategoriesList
 {
     public class GetCategoriesListQuery : IRequest<CategoriesListViewModel>
     {

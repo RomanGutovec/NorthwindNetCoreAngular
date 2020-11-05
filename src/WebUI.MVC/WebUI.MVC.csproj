@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\product\productList.js" />
+  </ItemGroup>
+
 </Project>

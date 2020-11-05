@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Application.Categories.Queries;
+using Application.Categories.Queries.CategoriesList;
 using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Products.Commands.CreateProduct;
@@ -34,9 +35,9 @@ namespace WebUI.MVC.Controllers
         }
 
         // GET: ProductController
-        public async Task<IActionResult> Index([FromQuery] int maxCount = 0)
+        public async Task<IActionResult> Index([FromQuery] int max = 0)
         {
-            _northwindConfig.AmountOfProductsFromQuery = maxCount;
+            _northwindConfig.AmountOfProductsFromQuery = max;
             var products = await _mediator.Send(new GetProductsListQuery());
             return View(products);
         }

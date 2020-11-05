@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using Application.Categories.Commands.UpdateCategory;
-using Application.Categories.Queries;
+using Application.Categories.Queries.CategoriesList;
 using Application.Categories.Queries.CategoryDetail;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +32,7 @@ namespace WebUI.MVC.Controllers
         {
             var categoryDetail = await _mediator.Send(new GetCategoryDetailQuery { Id = id });
 
-            return File(categoryDetail.Picture, "image/png");
+            return File(categoryDetail.Picture, "image/bmp");
         }
 
         [HttpGet]
@@ -57,7 +57,6 @@ namespace WebUI.MVC.Controllers
                     memoryStream.ToArray().CopyTo(categoryToUpdate.Picture, 0);
 
                     await _mediator.Send(categoryToUpdate);
-
                 } else {
                     ModelState.AddModelError("File", "The file is too large.");
                 }

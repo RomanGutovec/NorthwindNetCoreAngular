@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Categories.Queries;
+using Application.Categories.Queries.CategoriesList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -46,7 +47,6 @@ namespace WebUI.MVC.Tests
                 var categories = CreateCategoriesEntities();
                 return Task.Run(() => categories);
             }
-
 
             private CategoriesListViewModel CreateCategoriesEntities()
             {

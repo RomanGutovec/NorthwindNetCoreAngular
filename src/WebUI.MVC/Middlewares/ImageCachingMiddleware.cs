@@ -84,7 +84,11 @@ namespace WebUI.MVC.Middlewares
             var pathToStoreImages = Path.Combine(AppContext.BaseDirectory, _options.Path);
             if (!Directory.Exists(pathToStoreImages)) {
                 Directory.CreateDirectory(pathToStoreImages);
+            } else if (Directory.GetCreationTime(pathToStoreImages) <= DateTime.Now.AddDays(_options.DaysForFullCleanUp)) {
+                Directory.Delete(pathToStoreImages, true);
+                Directory.CreateDirectory(pathToStoreImages);
             }
+
             using (var fileStream = File.OpenWrite(path)) {
                 stream.CopyTo(fileStream);
             }
