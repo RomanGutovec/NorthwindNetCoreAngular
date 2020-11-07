@@ -73,3 +73,7 @@ body {
 .table .thead-dark th {
     word-spacing: 60px;
 }
+
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    content: ">"
+}

@@ -11,7 +11,7 @@ namespace Application.Products.Commands.CreateProduct
             RuleFor(product => product.SupplierId).NotNull().WithMessage("Please choose supplier");
             RuleFor(product => product.UnitPrice).NotNull().WithMessage("Price is required");
             RuleFor(product => product.QuantityPerUnit).NotEmpty().WithMessage("Quantity is required.");
-            RuleFor(product => product.QuantityPerUnit).MaximumLength(20).WithMessage("Amount of units is too big.");
+            RuleFor(product => product.QuantityPerUnit).MaximumLength(40).WithMessage("Amount of units is too big.");
             RuleFor(product => product.UnitsInStock).NotEmpty().WithMessage("Units amount is required.");
             RuleFor(product => product.ReorderLevel).NotEmpty().WithMessage("Reorder level is required.");
         }

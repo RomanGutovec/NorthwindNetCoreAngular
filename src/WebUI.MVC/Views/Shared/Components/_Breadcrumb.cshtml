@@ -1,0 +1,16 @@
+﻿@model BreadcrumbViewModel
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        @if (Model.Action == "Index") {
+            <li class="breadcrumb-item active" aria-current="page">@Model.Controller</li>
+        } else if (Model.Controller == "Home") {
+            <li class="breadcrumb-item active" aria-current="page">@Model.Action</li>
+        } else {
+            <li class="breadcrumb-item">
+                <a asp-controller="@Model.Controller" asp-action="Index">@Model.Controller</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Action</li>
+        }
+    </ol>
+</nav>
