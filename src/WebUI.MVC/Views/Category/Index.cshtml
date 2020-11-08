@@ -34,7 +34,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Image", "Images", new { id = item.Id })
+                    @Html.ActionLink("Edit image", "Images", new { id = item.Id }) /<br />
+                    @Html.NorthwindImageLink(item.Id, "Show image using htmlHelper") /<br />
+                    <a northwind-id=item.Id>Show image using tagHelper</a>
                 </td>
             </tr>
         }
