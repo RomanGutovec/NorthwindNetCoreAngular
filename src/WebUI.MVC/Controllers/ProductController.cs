@@ -38,7 +38,7 @@ namespace WebUI.MVC.Controllers
         public async Task<IActionResult> Index([FromQuery] int max = 0)
         {
             _northwindConfig.AmountOfProductsFromQuery = max;
-            var products = await _mediator.Send(new GetProductsListQuery());
+            var products = await _mediator.Send(new GetProductsListQuery {AmountOfProducts = _northwindConfig.AmountOfProducts});
             return View(products);
         }
 

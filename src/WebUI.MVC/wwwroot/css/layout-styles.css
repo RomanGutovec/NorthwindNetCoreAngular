@@ -1,0 +1,12 @@
+﻿body {
+    background: url("../images/background-blured-grass.jpg") no-repeat;
+    background-size: 100vw 100%;
+}
+
+.table .thead-dark th {
+    word-spacing: 60px;
+}
+
+.table tbody td {
+    background-color: rgba(255,255,255,0.7);
+}

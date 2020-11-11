@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Infrastructure.Common.Processors;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ namespace Infrastructure.Persistence
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, NorthwindDbContext>();
+
+            services.AddTransient<ICategoryImageProcessor, CategoryImageProcessor>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

@@ -14,11 +14,13 @@ namespace Application.Categories.Queries.CategoryDetail
     {
         private readonly INorthwindDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ICategoryImageProcessor _imageProcessor;
 
-        public GetCategoryDetailQueryHandler(INorthwindDbContext dbContext, IMapper mapper)
+        public GetCategoryDetailQueryHandler(INorthwindDbContext dbContext, IMapper mapper, ICategoryImageProcessor imageProcessor)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _imageProcessor = imageProcessor;
         }
 
         public async Task<CategoryDetailViewModel> Handle(GetCategoryDetailQuery request, CancellationToken cancellationToken)
@@ -30,6 +32,8 @@ namespace Application.Categories.Queries.CategoryDetail
             {
                 throw new NotFoundException(nameof(Category), request.Id);
             }
+
+            _imageProcessor.Process(categoryDetail);
 
             return categoryDetail;
         }

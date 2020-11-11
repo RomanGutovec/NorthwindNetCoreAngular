@@ -6,6 +6,7 @@ using Application.Categories.Queries.CategoryDetail;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.MVC.Common;
 using WebUI.MVC.Filters;
 
 namespace WebUI.MVC.Controllers
@@ -20,6 +21,7 @@ namespace WebUI.MVC.Controllers
         }
 
         [TypeFilter(typeof(LogActionFilter))]
+        [LogThisAction(typeof(LogActionFilter))]
         public async Task<IActionResult> Index()
         {
             var categories = await _mediator.Send(new GetCategoriesListQuery());
@@ -27,7 +29,7 @@ namespace WebUI.MVC.Controllers
         }
 
         [HttpGet]
-        [TypeFilter(typeof(LogActionFilter), Arguments = new object[] { true })]
+        [LogThisAction(typeof(LogActionFilter))]
         public async Task<FileContentResult> GetImage(int id)
         {
             var categoryDetail = await _mediator.Send(new GetCategoryDetailQuery { Id = id });
