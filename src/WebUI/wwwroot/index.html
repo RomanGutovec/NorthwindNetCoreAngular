@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product App</title>
+</head>
+<body>
+    <div>
+        <h2>All products</h2>
+        <ul id="products" />
+    </div>
+    <div>
+        <h2>All categories</h2>
+        <ul id="categories" />
+    </div>
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        var productsUri = 'api/products';
+        var categoriesUri = 'api/categories';
+
+        $(document).ready(function () {
+            // Send an AJAX request
+            $.getJSON(productsUri)
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    $.each(data.products, function (key, item) {
+                        // Add a list item for the product.
+                        $('<li>', { text: formatProductItem(item) }).appendTo($('#products'));
+                    });
+
+                });
+            $.getJSON(categoriesUri)
+                .done(function (data) {
+                    // On success, 'data' contains a list of categories.
+                    $.each(data.categories, function (key, item) {
+                        // Add a list item for the product.
+                        $('<li>', { text: formatCategoryItem(item) }).appendTo($('#categories'));
+                    });
+                });
+        });
+
+        function formatProductItem(item) {
+            return 'Product name: ' + item.productName + '; Price: $' + item.unitPrice;
+        }
+
+        function formatCategoryItem(item) {
+            return 'Category name: ' + item.name + '; Category description: ' + item.description;
+        }
+    </script>
+</body>
+</html>
