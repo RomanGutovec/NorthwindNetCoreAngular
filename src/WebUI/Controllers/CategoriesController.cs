@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
+using Application.Categories.Commands.UpdateCategory;
 using Application.Categories.Queries.CategoriesList;
+using Application.Categories.Queries.CategoryDetail;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.Controllers
@@ -21,6 +25,27 @@ namespace WebUI.Controllers
         {
             var categories = await _mediator.Send(new GetCategoriesListQuery());
             return Ok(categories);
+        }
+
+        [HttpGet("{id}")]
+        [Route("image/{id}")]
+        public async Task<IActionResult> GetImage(int id)
+        {
+            var category = await _mediator.Send(new GetCategoryDetailQuery { Id = id });
+            return File(category.Picture, "image/bmp");
+        }
+
+        [HttpPut("{id}")]
+        [Route("uploadimage/{id}")]
+        public async Task<IActionResult> UpdateImage(int id, [FromForm] IFormFile uploadedFile)
+        {
+            var updateCommand = new UpdateCategoryCommand { Id = id };
+            await using var stream = new MemoryStream();
+            await uploadedFile.CopyToAsync(stream);
+            updateCommand.Picture = stream.ToArray();
+
+            await _mediator.Send(updateCommand);
+            return NoContent();
         }
     }
 }
