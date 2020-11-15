@@ -27,16 +27,14 @@ namespace WebUI.Controllers
             return Ok(categories);
         }
 
-        [HttpGet("{id}")]
-        [Route("image/{id}")]
+        [HttpGet("image/{id}")]
         public async Task<IActionResult> GetImage(int id)
         {
             var category = await _mediator.Send(new GetCategoryDetailQuery { Id = id });
             return File(category.Picture, "image/bmp");
         }
 
-        [HttpPut("{id}")]
-        [Route("uploadimage/{id}")]
+        [HttpPut("uploadimage/{id}")]
         public async Task<IActionResult> UpdateImage(int id, [FromForm] IFormFile uploadedFile)
         {
             var updateCommand = new UpdateCategoryCommand { Id = id };
