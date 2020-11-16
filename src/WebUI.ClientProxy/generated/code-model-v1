@@ -1,0 +1,2425 @@
+{
+ "$id": "1",
+ "modelTypes": [
+  {
+   "$id": "2",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "3",
+     "isReadOnly": false,
+     "realPath": [
+      "id"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "4",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "5",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "6",
+      "fixed": false,
+      "raw": "id"
+     },
+     "serializedName": "id",
+     "modelType": {
+      "$id": "7",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "8",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "9",
+     "isReadOnly": false,
+     "realPath": [
+      "name"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "10",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "11",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "12",
+      "fixed": false,
+      "raw": "name"
+     },
+     "serializedName": "name",
+     "modelType": {
+      "$id": "13",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "14",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "15",
+     "isReadOnly": false,
+     "realPath": [
+      "description"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "16",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "17",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "18",
+      "fixed": false,
+      "raw": "description"
+     },
+     "serializedName": "description",
+     "modelType": {
+      "$id": "19",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "20",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "21",
+     "isReadOnly": false,
+     "realPath": [
+      "picture"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "22",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "23",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "24",
+      "fixed": false,
+      "raw": "picture"
+     },
+     "serializedName": "picture",
+     "modelType": {
+      "$id": "25",
+      "$type": "PrimaryType",
+      "format": "byte",
+      "knownPrimaryType": "byteArray",
+      "name": {
+       "$id": "26",
+       "fixed": false,
+       "raw": "ByteArray"
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "CategoryDto",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "27",
+    "fixed": false,
+    "raw": "CategoryDto"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "CategoryDto",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/CategoryDto"
+     ]
+    }
+   },
+   "deprecated": false
+  },
+  {
+   "$id": "28",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "29",
+     "isReadOnly": false,
+     "realPath": [
+      "categories"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "30",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "31",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "32",
+      "fixed": false,
+      "raw": "categories"
+     },
+     "serializedName": "categories",
+     "modelType": {
+      "$id": "33",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "2"
+      },
+      "name": {
+       "$id": "34",
+       "fixed": false
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "CategoriesListViewModel",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "35",
+    "fixed": false,
+    "raw": "CategoriesListViewModel"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "CategoriesListViewModel",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/CategoriesListViewModel"
+     ]
+    }
+   },
+   "deprecated": false
+  },
+  {
+   "$id": "36",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "37",
+     "isReadOnly": false,
+     "realPath": [
+      "productId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "38",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "39",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "40",
+      "fixed": false,
+      "raw": "productId"
+     },
+     "serializedName": "productId",
+     "modelType": {
+      "$id": "41",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "42",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "43",
+     "isReadOnly": false,
+     "realPath": [
+      "productName"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "44",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "45",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "46",
+      "fixed": false,
+      "raw": "productName"
+     },
+     "serializedName": "productName",
+     "modelType": {
+      "$id": "47",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "48",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "49",
+     "isReadOnly": false,
+     "realPath": [
+      "quantityPerUnit"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "50",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "51",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "52",
+      "fixed": false,
+      "raw": "quantityPerUnit"
+     },
+     "serializedName": "quantityPerUnit",
+     "modelType": {
+      "$id": "53",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "54",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "55",
+     "isReadOnly": false,
+     "realPath": [
+      "unitPrice"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "56",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "57",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "58",
+      "fixed": false,
+      "raw": "unitPrice"
+     },
+     "serializedName": "unitPrice",
+     "modelType": {
+      "$id": "59",
+      "$type": "PrimaryType",
+      "format": "double",
+      "knownPrimaryType": "double",
+      "name": {
+       "$id": "60",
+       "fixed": false,
+       "raw": "Double"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "61",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsInStock"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "62",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "63",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "64",
+      "fixed": false,
+      "raw": "unitsInStock"
+     },
+     "serializedName": "unitsInStock",
+     "modelType": {
+      "$id": "65",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "66",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "67",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsOnOrder"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "68",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "69",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "70",
+      "fixed": false,
+      "raw": "unitsOnOrder"
+     },
+     "serializedName": "unitsOnOrder",
+     "modelType": {
+      "$id": "71",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "72",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "73",
+     "isReadOnly": false,
+     "realPath": [
+      "reorderLevel"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "74",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "75",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "76",
+      "fixed": false,
+      "raw": "reorderLevel"
+     },
+     "serializedName": "reorderLevel",
+     "modelType": {
+      "$id": "77",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "78",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "79",
+     "isReadOnly": false,
+     "realPath": [
+      "discontinued"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "80",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "81",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "82",
+      "fixed": false,
+      "raw": "discontinued"
+     },
+     "serializedName": "discontinued",
+     "modelType": {
+      "$id": "83",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "boolean",
+      "name": {
+       "$id": "84",
+       "fixed": false,
+       "raw": "Boolean"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "85",
+     "isReadOnly": false,
+     "realPath": [
+      "categoryId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "86",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "87",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "88",
+      "fixed": false,
+      "raw": "categoryId"
+     },
+     "serializedName": "categoryId",
+     "modelType": {
+      "$id": "89",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "90",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "91",
+     "isReadOnly": false,
+     "realPath": [
+      "categoryName"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "92",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "93",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "94",
+      "fixed": false,
+      "raw": "categoryName"
+     },
+     "serializedName": "categoryName",
+     "modelType": {
+      "$id": "95",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "96",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "97",
+     "isReadOnly": false,
+     "realPath": [
+      "supplierId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "98",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "99",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "100",
+      "fixed": false,
+      "raw": "supplierId"
+     },
+     "serializedName": "supplierId",
+     "modelType": {
+      "$id": "101",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "102",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "103",
+     "isReadOnly": false,
+     "realPath": [
+      "supplierCompanyName"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "104",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "105",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "106",
+      "fixed": false,
+      "raw": "supplierCompanyName"
+     },
+     "serializedName": "supplierCompanyName",
+     "modelType": {
+      "$id": "107",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "108",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "ProductDto",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "109",
+    "fixed": false,
+    "raw": "ProductDto"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "ProductDto",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/ProductDto"
+     ]
+    }
+   },
+   "deprecated": false
+  },
+  {
+   "$id": "110",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "111",
+     "isReadOnly": false,
+     "realPath": [
+      "products"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "112",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "113",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "114",
+      "fixed": false,
+      "raw": "products"
+     },
+     "serializedName": "products",
+     "modelType": {
+      "$id": "115",
+      "$type": "SequenceType",
+      "elementType": {
+       "$ref": "36"
+      },
+      "name": {
+       "$id": "116",
+       "fixed": false
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "ProductsListViewModel",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "117",
+    "fixed": false,
+    "raw": "ProductsListViewModel"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "ProductsListViewModel",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/ProductsListViewModel"
+     ]
+    }
+   },
+   "deprecated": false
+  },
+  {
+   "$id": "118",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "119",
+     "isReadOnly": false,
+     "realPath": [
+      "productName"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "120",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "121",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "122",
+      "fixed": false,
+      "raw": "productName"
+     },
+     "serializedName": "productName",
+     "modelType": {
+      "$id": "123",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "124",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "125",
+     "isReadOnly": false,
+     "realPath": [
+      "quantityPerUnit"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "126",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "127",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "128",
+      "fixed": false,
+      "raw": "quantityPerUnit"
+     },
+     "serializedName": "quantityPerUnit",
+     "modelType": {
+      "$id": "129",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "130",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "131",
+     "isReadOnly": false,
+     "realPath": [
+      "unitPrice"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "132",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "133",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "134",
+      "fixed": false,
+      "raw": "unitPrice"
+     },
+     "serializedName": "unitPrice",
+     "modelType": {
+      "$id": "135",
+      "$type": "PrimaryType",
+      "format": "double",
+      "knownPrimaryType": "double",
+      "name": {
+       "$id": "136",
+       "fixed": false,
+       "raw": "Double"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "137",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsInStock"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "138",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "139",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "140",
+      "fixed": false,
+      "raw": "unitsInStock"
+     },
+     "serializedName": "unitsInStock",
+     "modelType": {
+      "$id": "141",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "142",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "143",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsOnOrder"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "144",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "145",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "146",
+      "fixed": false,
+      "raw": "unitsOnOrder"
+     },
+     "serializedName": "unitsOnOrder",
+     "modelType": {
+      "$id": "147",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "148",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "149",
+     "isReadOnly": false,
+     "realPath": [
+      "reorderLevel"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "150",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "151",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "152",
+      "fixed": false,
+      "raw": "reorderLevel"
+     },
+     "serializedName": "reorderLevel",
+     "modelType": {
+      "$id": "153",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "154",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "155",
+     "isReadOnly": false,
+     "realPath": [
+      "discontinued"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "156",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "157",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "158",
+      "fixed": false,
+      "raw": "discontinued"
+     },
+     "serializedName": "discontinued",
+     "modelType": {
+      "$id": "159",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "boolean",
+      "name": {
+       "$id": "160",
+       "fixed": false,
+       "raw": "Boolean"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "161",
+     "isReadOnly": false,
+     "realPath": [
+      "categoryId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "162",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "163",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "164",
+      "fixed": false,
+      "raw": "categoryId"
+     },
+     "serializedName": "categoryId",
+     "modelType": {
+      "$id": "165",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "166",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "167",
+     "isReadOnly": false,
+     "realPath": [
+      "supplierId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "168",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "169",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "170",
+      "fixed": false,
+      "raw": "supplierId"
+     },
+     "serializedName": "supplierId",
+     "modelType": {
+      "$id": "171",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "172",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "CreateProductCommand",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "173",
+    "fixed": false,
+    "raw": "CreateProductCommand"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "CreateProductCommand",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/CreateProductCommand"
+     ]
+    }
+   },
+   "deprecated": false
+  },
+  {
+   "$id": "174",
+   "$type": "CompositeType",
+   "properties": [
+    {
+     "$id": "175",
+     "isReadOnly": false,
+     "realPath": [
+      "productId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "176",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "177",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "178",
+      "fixed": false,
+      "raw": "productId"
+     },
+     "serializedName": "productId",
+     "modelType": {
+      "$id": "179",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "180",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "181",
+     "isReadOnly": false,
+     "realPath": [
+      "productName"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "182",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "183",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "184",
+      "fixed": false,
+      "raw": "productName"
+     },
+     "serializedName": "productName",
+     "modelType": {
+      "$id": "185",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "186",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "187",
+     "isReadOnly": false,
+     "realPath": [
+      "quantityPerUnit"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "188",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "189",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "190",
+      "fixed": false,
+      "raw": "quantityPerUnit"
+     },
+     "serializedName": "quantityPerUnit",
+     "modelType": {
+      "$id": "191",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "string",
+      "name": {
+       "$id": "192",
+       "fixed": false,
+       "raw": "String"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "193",
+     "isReadOnly": false,
+     "realPath": [
+      "unitPrice"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "194",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "195",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "196",
+      "fixed": false,
+      "raw": "unitPrice"
+     },
+     "serializedName": "unitPrice",
+     "modelType": {
+      "$id": "197",
+      "$type": "PrimaryType",
+      "format": "double",
+      "knownPrimaryType": "double",
+      "name": {
+       "$id": "198",
+       "fixed": false,
+       "raw": "Double"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "199",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsInStock"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "200",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "201",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "202",
+      "fixed": false,
+      "raw": "unitsInStock"
+     },
+     "serializedName": "unitsInStock",
+     "modelType": {
+      "$id": "203",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "204",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "205",
+     "isReadOnly": false,
+     "realPath": [
+      "unitsOnOrder"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "206",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "207",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "208",
+      "fixed": false,
+      "raw": "unitsOnOrder"
+     },
+     "serializedName": "unitsOnOrder",
+     "modelType": {
+      "$id": "209",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "210",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "211",
+     "isReadOnly": false,
+     "realPath": [
+      "reorderLevel"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "212",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "213",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "214",
+      "fixed": false,
+      "raw": "reorderLevel"
+     },
+     "serializedName": "reorderLevel",
+     "modelType": {
+      "$id": "215",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "216",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "217",
+     "isReadOnly": false,
+     "realPath": [
+      "discontinued"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "218",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "219",
+      "fixed": false
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "220",
+      "fixed": false,
+      "raw": "discontinued"
+     },
+     "serializedName": "discontinued",
+     "modelType": {
+      "$id": "221",
+      "$type": "PrimaryType",
+      "knownPrimaryType": "boolean",
+      "name": {
+       "$id": "222",
+       "fixed": false,
+       "raw": "Boolean"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "223",
+     "isReadOnly": false,
+     "realPath": [
+      "categoryId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "224",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "225",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "226",
+      "fixed": false,
+      "raw": "categoryId"
+     },
+     "serializedName": "categoryId",
+     "modelType": {
+      "$id": "227",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "228",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    },
+    {
+     "$id": "229",
+     "isReadOnly": false,
+     "realPath": [
+      "supplierId"
+     ],
+     "collectionFormat": "none",
+     "defaultValue": {
+      "$id": "230",
+      "fixed": false
+     },
+     "deprecated": false,
+     "documentation": {
+      "$id": "231",
+      "fixed": false
+     },
+     "extensions": {
+      "x-nullable": true
+     },
+     "isRequired": false,
+     "isConstant": false,
+     "name": {
+      "$id": "232",
+      "fixed": false,
+      "raw": "supplierId"
+     },
+     "serializedName": "supplierId",
+     "modelType": {
+      "$id": "233",
+      "$type": "PrimaryType",
+      "format": "int32",
+      "knownPrimaryType": "int",
+      "name": {
+       "$id": "234",
+       "fixed": false,
+       "raw": "Int"
+      },
+      "deprecated": false
+     }
+    }
+   ],
+   "serializedName": "UpdateProductCommand",
+   "containsConstantProperties": false,
+   "name": {
+    "$id": "235",
+    "fixed": false,
+    "raw": "UpdateProductCommand"
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "UpdateProductCommand",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/schemas/UpdateProductCommand"
+     ]
+    }
+   },
+   "deprecated": false
+  }
+ ],
+ "name": "NorthwindAPI",
+ "namespace": "NrothwindClientProxy",
+ "modelsName": "Models",
+ "apiVersion": "v1",
+ "baseUrl": "http://localhost",
+ "properties": [
+  {
+   "$id": "236",
+   "isReadOnly": false,
+   "realPath": [
+    "id"
+   ],
+   "collectionFormat": "none",
+   "defaultValue": {
+    "$id": "237",
+    "fixed": false
+   },
+   "deprecated": false,
+   "documentation": {
+    "$id": "238",
+    "fixed": false
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "paths·5a82bj·api-categories-image-id·get·parameters·0",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·5a82bj·api-categories-image-id·get·parameters·0"
+     ]
+    },
+    "x-ms-parameter-location": "method"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "239",
+    "fixed": false,
+    "raw": "id"
+   },
+   "serializedName": "id",
+   "modelType": {
+    "$id": "240",
+    "$type": "PrimaryType",
+    "format": "int32",
+    "knownPrimaryType": "int",
+    "name": {
+     "$id": "241",
+     "fixed": false,
+     "raw": "Int"
+    },
+    "deprecated": false
+   }
+  },
+  {
+   "$id": "242",
+   "isReadOnly": false,
+   "realPath": [
+    "id"
+   ],
+   "collectionFormat": "none",
+   "defaultValue": {
+    "$id": "243",
+    "fixed": false
+   },
+   "deprecated": false,
+   "documentation": {
+    "$id": "244",
+    "fixed": false
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "paths·wfmupm·api-categories-uploadimage-id·put·parameters·0",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·wfmupm·api-categories-uploadimage-id·put·parameters·0"
+     ]
+    },
+    "x-ms-parameter-location": "method"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "245",
+    "fixed": false,
+    "raw": "Id1"
+   },
+   "serializedName": "id",
+   "modelType": {
+    "$id": "246",
+    "$type": "PrimaryType",
+    "format": "int32",
+    "knownPrimaryType": "int",
+    "name": {
+     "$id": "247",
+     "fixed": false,
+     "raw": "Int"
+    },
+    "deprecated": false
+   }
+  },
+  {
+   "$id": "248",
+   "isReadOnly": false,
+   "realPath": [
+    "id"
+   ],
+   "collectionFormat": "none",
+   "defaultValue": {
+    "$id": "249",
+    "fixed": false
+   },
+   "deprecated": false,
+   "documentation": {
+    "$id": "250",
+    "fixed": false
+   },
+   "extensions": {
+    "x-ms-metadata": {
+     "apiVersions": [
+      "v1"
+     ],
+     "filename": [
+      "mem:///107?oai3.shaken.json"
+     ],
+     "name": "paths·1kk69qr·api-products-id·delete·parameters·0",
+     "originalLocations": [
+      "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·1kk69qr·api-products-id·delete·parameters·0"
+     ]
+    },
+    "x-ms-parameter-location": "method"
+   },
+   "isRequired": true,
+   "isConstant": false,
+   "name": {
+    "$id": "251",
+    "fixed": false,
+    "raw": "Id2"
+   },
+   "serializedName": "id",
+   "modelType": {
+    "$id": "252",
+    "$type": "PrimaryType",
+    "format": "int32",
+    "knownPrimaryType": "int",
+    "name": {
+     "$id": "253",
+     "fixed": false,
+     "raw": "Int"
+    },
+    "deprecated": false
+   }
+  }
+ ],
+ "operations": [
+  {
+   "$id": "254",
+   "methods": [
+    {
+     "$id": "255",
+     "name": {
+      "$id": "256",
+      "fixed": false,
+      "raw": "GetCategories"
+     },
+     "group": {
+      "$id": "257",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "GetCategories",
+     "url": "/api/Categories",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "258",
+       "body": {
+        "$ref": "28"
+       },
+       "extensions": {
+        "$id": "259",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·70f19r·api-categories·get·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·70f19r·api-categories·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "260",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "261",
+      "body": {
+       "$ref": "28"
+      },
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "text/plain",
+      "application/json",
+      "text/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "262",
+     "parameters": [
+      {
+       "$id": "263",
+       "clientProperty": {
+        "$ref": "236"
+       },
+       "location": "path",
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "264",
+        "fixed": false
+       },
+       "deprecated": false,
+       "documentation": {
+        "$id": "265",
+        "fixed": false
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·5a82bj·api-categories-image-id·get·parameters·0",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·5a82bj·api-categories-image-id·get·parameters·0"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "266",
+        "fixed": false,
+        "raw": "id"
+       },
+       "serializedName": "id",
+       "modelType": {
+        "$id": "267",
+        "$type": "PrimaryType",
+        "format": "int32",
+        "knownPrimaryType": "int",
+        "name": {
+         "$id": "268",
+         "fixed": false,
+         "raw": "Int"
+        },
+        "deprecated": false
+       }
+      }
+     ],
+     "name": {
+      "$id": "269",
+      "fixed": false,
+      "raw": "GetImage"
+     },
+     "group": {
+      "$id": "270",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "GetImage",
+     "url": "/api/Categories/image/{id}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "271",
+       "extensions": {
+        "$id": "272",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·1p6rjf·api-categories-image-id·get·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·1p6rjf·api-categories-image-id·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "273",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "274",
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "275",
+     "parameters": [
+      {
+       "$id": "276",
+       "clientProperty": {
+        "$ref": "236"
+       },
+       "location": "path",
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "277",
+        "fixed": false
+       },
+       "deprecated": false,
+       "documentation": {
+        "$id": "278",
+        "fixed": false
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·wfmupm·api-categories-uploadimage-id·put·parameters·0",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·wfmupm·api-categories-uploadimage-id·put·parameters·0"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "279",
+        "fixed": false,
+        "raw": "id"
+       },
+       "serializedName": "id",
+       "modelType": {
+        "$id": "280",
+        "$type": "PrimaryType",
+        "format": "int32",
+        "knownPrimaryType": "int",
+        "name": {
+         "$id": "281",
+         "fixed": false,
+         "raw": "Int"
+        },
+        "deprecated": false
+       }
+      }
+     ],
+     "name": {
+      "$id": "282",
+      "fixed": false,
+      "raw": "UpdateImage"
+     },
+     "group": {
+      "$id": "283",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "UpdateImage",
+     "url": "/api/Categories/uploadimage/{id}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "put",
+     "responses": {
+      "OK": {
+       "$id": "284",
+       "extensions": {
+        "$id": "285",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·tfg7x3·api-categories-uploadimage-id·put·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·tfg7x3·api-categories-uploadimage-id·put·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "286",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "287",
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "288",
+     "name": {
+      "$id": "289",
+      "fixed": false,
+      "raw": "GetProducts"
+     },
+     "group": {
+      "$id": "290",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "GetProducts",
+     "url": "/api/Products",
+     "isAbsoluteUrl": false,
+     "httpMethod": "get",
+     "responses": {
+      "OK": {
+       "$id": "291",
+       "body": {
+        "$ref": "110"
+       },
+       "extensions": {
+        "$id": "292",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·1wt63ea·api-products·get·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·1wt63ea·api-products·get·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "293",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "294",
+      "body": {
+       "$ref": "110"
+      },
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "text/plain",
+      "application/json",
+      "text/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "295",
+     "parameters": [
+      {
+       "$id": "296",
+       "location": "body",
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "297",
+        "fixed": false
+       },
+       "deprecated": false,
+       "documentation": {
+        "$id": "298",
+        "fixed": false
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·ytglxx·api-products·post·requestbody",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/requestBodies/paths·ytglxx·api-products·post·requestbody"
+         ]
+        }
+       },
+       "isRequired": false,
+       "isConstant": false,
+       "name": {
+        "$id": "299",
+        "fixed": false,
+        "raw": "body"
+       },
+       "serializedName": "body",
+       "modelType": {
+        "$ref": "118"
+       }
+      }
+     ],
+     "name": {
+      "$id": "300",
+      "fixed": false,
+      "raw": "CreateProduct"
+     },
+     "group": {
+      "$id": "301",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "CreateProduct",
+     "url": "/api/Products",
+     "isAbsoluteUrl": false,
+     "httpMethod": "post",
+     "responses": {
+      "OK": {
+       "$id": "302",
+       "body": {
+        "$id": "303",
+        "$type": "PrimaryType",
+        "format": "int32",
+        "knownPrimaryType": "int",
+        "name": {
+         "$id": "304",
+         "fixed": false,
+         "raw": "Int"
+        },
+        "deprecated": false
+       },
+       "extensions": {
+        "$id": "305",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·ljmi1a·api-products·post·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·ljmi1a·api-products·post·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "306",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "307",
+      "body": {
+       "$ref": "303"
+      },
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "text/plain",
+      "application/json",
+      "text/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "308",
+     "parameters": [
+      {
+       "$id": "309",
+       "location": "body",
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "310",
+        "fixed": false
+       },
+       "deprecated": false,
+       "documentation": {
+        "$id": "311",
+        "fixed": false
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·b8ivvm·api-products·put·requestbody",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/requestBodies/paths·b8ivvm·api-products·put·requestbody"
+         ]
+        }
+       },
+       "isRequired": false,
+       "isConstant": false,
+       "name": {
+        "$id": "312",
+        "fixed": false,
+        "raw": "body"
+       },
+       "serializedName": "body",
+       "modelType": {
+        "$ref": "174"
+       }
+      }
+     ],
+     "name": {
+      "$id": "313",
+      "fixed": false,
+      "raw": "UpdateProduct"
+     },
+     "group": {
+      "$id": "314",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "UpdateProduct",
+     "url": "/api/Products",
+     "isAbsoluteUrl": false,
+     "httpMethod": "put",
+     "responses": {
+      "OK": {
+       "$id": "315",
+       "extensions": {
+        "$id": "316",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·igzxf5·api-products·put·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·igzxf5·api-products·put·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "317",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "318",
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    },
+    {
+     "$id": "319",
+     "parameters": [
+      {
+       "$id": "320",
+       "clientProperty": {
+        "$ref": "236"
+       },
+       "location": "path",
+       "collectionFormat": "none",
+       "defaultValue": {
+        "$id": "321",
+        "fixed": false
+       },
+       "deprecated": false,
+       "documentation": {
+        "$id": "322",
+        "fixed": false
+       },
+       "extensions": {
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·1kk69qr·api-products-id·delete·parameters·0",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/parameters/paths·1kk69qr·api-products-id·delete·parameters·0"
+         ]
+        },
+        "x-ms-parameter-location": "method"
+       },
+       "isRequired": true,
+       "isConstant": false,
+       "name": {
+        "$id": "323",
+        "fixed": false,
+        "raw": "id"
+       },
+       "serializedName": "id",
+       "modelType": {
+        "$id": "324",
+        "$type": "PrimaryType",
+        "format": "int32",
+        "knownPrimaryType": "int",
+        "name": {
+         "$id": "325",
+         "fixed": false,
+         "raw": "Int"
+        },
+        "deprecated": false
+       }
+      }
+     ],
+     "name": {
+      "$id": "326",
+      "fixed": false,
+      "raw": "DeleteProduct"
+     },
+     "group": {
+      "$id": "327",
+      "fixed": false,
+      "raw": ""
+     },
+     "serializedName": "DeleteProduct",
+     "url": "/api/Products/{id}",
+     "isAbsoluteUrl": false,
+     "httpMethod": "delete",
+     "responses": {
+      "OK": {
+       "$id": "328",
+       "extensions": {
+        "$id": "329",
+        "x-ms-metadata": {
+         "apiVersions": [
+          "v1"
+         ],
+         "filename": [
+          "mem:///107?oai3.shaken.json"
+         ],
+         "name": "paths·1xfkkvf·api-products-id·delete·responses·200",
+         "originalLocations": [
+          "file:///C:/WORK/MentoringProgram/ASP.NET%20CORE/ProjectEpamMentoring/NorthwindSPA/src/WebUI.ClientProxy/swagger.json#/components/responses/paths·1xfkkvf·api-products-id·delete·responses·200"
+         ]
+        }
+       },
+       "isNullable": true
+      }
+     },
+     "defaultResponse": {
+      "$id": "330",
+      "isNullable": true
+     },
+     "returnType": {
+      "$id": "331",
+      "isNullable": true
+     },
+     "requestContentType": "application/json; charset=utf-8",
+     "responseContentTypes": [
+      "application/json"
+     ],
+     "extensions": {
+      "servers": []
+     },
+     "deprecated": false,
+     "hidden": false
+    }
+   ],
+   "name": {
+    "$id": "332",
+    "fixed": false,
+    "raw": ""
+   },
+   "typeName": {
+    "$id": "333",
+    "fixed": false
+   },
+   "nameForProperty": "NorthwindAPI"
+  }
+ ]
+}
