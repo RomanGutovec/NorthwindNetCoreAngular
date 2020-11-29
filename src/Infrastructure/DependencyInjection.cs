@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces;
 using Infrastructure.Common.Processors;
 using Infrastructure.Identity;
+using Infrastructure.Mailing;
+using Infrastructure.Mailing.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +27,11 @@ namespace Infrastructure.Persistence
 
             services.AddTransient<ICategoryImageProcessor, CategoryImageProcessor>();
 
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
+            //services.AddAuthentication()
+            //    .AddIdentityServerJwt();
+
+            services.Configure<SmtpSettings>(configuration.GetSection("SmtpSettings"));
+            services.AddSingleton<IEmailService, EmailService>();
 
             return services;
         }

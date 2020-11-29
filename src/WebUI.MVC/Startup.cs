@@ -14,6 +14,9 @@ using Application.Common.Interfaces;
 using WebUI.MVC.Common;
 using Microsoft.AspNetCore.Http;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using WebUI.MVC.Controllers;
 using WebUI.MVC.Middlewares;
 
@@ -45,6 +48,18 @@ namespace WebUI.MVC
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default SignIn settings.
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+            });
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
+
+            //services.AddDistributedMemoryCache();
+            //services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,8 +85,13 @@ namespace WebUI.MVC
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "myarea",
+                    pattern: "{areas:exists}/{controller=Account}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

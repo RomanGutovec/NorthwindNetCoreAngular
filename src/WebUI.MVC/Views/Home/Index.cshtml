@@ -4,5 +4,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    @if (!string.IsNullOrEmpty(User.Identity.Name)) {
+        <h1 class="display-4">Welcome, @User.Identity.Name</h1>
+    } else {
+        <h1 class="display-4">Welcome</h1>
+    }
 </div>

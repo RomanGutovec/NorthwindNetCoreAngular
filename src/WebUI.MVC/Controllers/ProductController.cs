@@ -13,6 +13,7 @@ using Application.Suppliers.Queries.SuppliersList;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.MVC.Helpers;
@@ -20,6 +21,7 @@ using WebUI.MVC.Models;
 
 namespace WebUI.MVC.Controllers
 {
+
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -35,6 +37,7 @@ namespace WebUI.MVC.Controllers
         }
 
         // GET: ProductController
+        [Authorize]
         public async Task<IActionResult> Index([FromQuery] int max = 0)
         {
             _northwindConfig.AmountOfProductsFromQuery = max;
