@@ -1,0 +1,30 @@
+﻿@model string
+@using Microsoft.AspNetCore.Identity
+@using Infrastructure.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+<div class="col-md-4 offset-4">
+    <section>
+        <h4>Use different service for log in:</h4>
+        <hr />
+        @{
+            var providers = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (!providers.Any()) {
+                <div>
+                    <p>
+                        We couldn't find any external provider
+                    </p>
+                </div>
+            } else {
+                <form asp-action="ExternalLogin" asp-route-returnurl="@Model" method="post" class="form-horizontal">
+                    <div>
+                        <p>
+                            @foreach (var provider in providers) {
+                                <input type="submit" class="btn btn-outline-info" value="@provider.Name" name="provider" />
+                            }
+                        </p>
+                    </div>
+                </form>
+            }
+        }
+    </section>
+</div>

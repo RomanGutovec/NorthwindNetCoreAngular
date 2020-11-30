@@ -11,14 +11,11 @@ using Newtonsoft.Json.Serialization;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Logging;
 using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 using WebUI.MVC.Common;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using WebUI.MVC.Controllers;
 using WebUI.MVC.Middlewares;
-using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 
 namespace WebUI.MVC
@@ -46,13 +43,7 @@ namespace WebUI.MVC
                 options.SerializerSettings.ContractResolver =
                     new CamelCasePropertyNamesContractResolver()).AddFluentValidation();
 
-            services.AddControllersWithViews(options =>
-                {
-                    var policy = new AuthorizationPolicyBuilder()
-                        .RequireAuthenticatedUser()
-                        .Build();
-                    options.Filters.Add(new AuthorizeFilter(policy));
-                })
+            services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
             services.AddRazorPages().AddMicrosoftIdentityUI(); ;
 
@@ -63,13 +54,11 @@ namespace WebUI.MVC
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
 
-            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
+            services.AddAuthentication()
+                .AddAzureAD(options => { Configuration.Bind("AzureAd", options); options.CookieSchemeName = IdentityConstants.ExternalScheme; });
+
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
-
-            //services.AddDistributedMemoryCache();
-            //services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,8 +83,6 @@ namespace WebUI.MVC
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

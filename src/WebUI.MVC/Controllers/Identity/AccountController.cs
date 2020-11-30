@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using Infrastructure.Identity;
 using Infrastructure.Mailing.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -132,6 +134,56 @@ namespace WebUI.MVC.Controllers.Identity
             }
 
             return View("~/Views/Identity/ResetPassword.cshtml", resetPasswordModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ExternalLogin(string provider, string returnUrl = null)
+        {
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return Challenge(properties, provider);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null)
+        {
+            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null) {
+                return RedirectToAction(nameof(Login));
+            }
+
+            var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+
+            if (user == null) {
+                var email = result.Principal.FindFirstValue("email")
+                            ?? result.Principal.FindFirstValue(ClaimTypes.Email)
+                            ?? result.Principal.FindFirstValue(ClaimTypes.Upn);
+               
+
+                if (email != null) {
+                    user = await _userManager.FindByEmailAsync(email);
+
+                    if (user == null) {
+                        user = new ApplicationUser { UserName = email, Email = email, EmailConfirmed = true };
+                        await _userManager.CreateAsync(user);
+                    }
+
+                    await _userManager.AddLoginAsync(user, new UserLoginInfo(info.LoginProvider, info.ProviderKey, info.LoginProvider));
+                }
+            }
+
+            if (user == null) {
+                return View("Error");
+            }
+
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+            await _signInManager.SignInAsync(user, false);
+
+            return Redirect(returnUrl ?? $"~/Home/{nameof(HomeController.Index)}");
         }
     }
 }

@@ -9,7 +9,7 @@
     <div class="col-md-4">
         <form asp-action="Login">
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-            @*<input asp-for="ReturnUrl" class="form-control" type="hidden" />*@
+            <input asp-for="ReturnUrl" class="form-control" type="hidden" />
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
@@ -25,6 +25,7 @@
             </div>
         </form>
     </div>
+        @await Html.PartialAsync("/Views/Identity/_ExternalAuthentication.cshtml", Model.ReturnUrl)
 </div>
 
 <div>
@@ -34,6 +35,7 @@
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Home Page</a>
 </div>
+
 
 @section Scripts
 {
