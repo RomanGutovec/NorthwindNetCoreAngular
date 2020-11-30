@@ -12,13 +12,14 @@ using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Logging;
 using Application.Common.Interfaces;
 using WebUI.MVC.Common;
-using Microsoft.AspNetCore.Http;
-using Domain.Entities;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using WebUI.MVC.Controllers;
 using WebUI.MVC.Middlewares;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
 
 namespace WebUI.MVC
 {
@@ -45,9 +46,15 @@ namespace WebUI.MVC
                 options.SerializerSettings.ContractResolver =
                     new CamelCasePropertyNamesContractResolver()).AddFluentValidation();
 
-            services.AddControllersWithViews()
+            services.AddControllersWithViews(options =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                })
                 .AddRazorRuntimeCompilation();
-            services.AddRazorPages();
+            services.AddRazorPages().AddMicrosoftIdentityUI(); ;
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -55,6 +62,9 @@ namespace WebUI.MVC
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
+
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
 
