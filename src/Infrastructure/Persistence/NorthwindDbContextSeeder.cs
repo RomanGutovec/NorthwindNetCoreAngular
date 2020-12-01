@@ -14,16 +14,18 @@ namespace Northwind.Persistence
     {
         private readonly INorthwindDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
         private readonly Dictionary<int, Category> Categories = new Dictionary<int, Category>();
         private readonly Dictionary<int, Supplier> Suppliers = new Dictionary<int, Supplier>();
         private readonly Dictionary<int, Product> Products = new Dictionary<int, Product>();
 
-        public NorthwindDbContextSeeder(INorthwindDbContext context, UserManager<ApplicationUser> userManager)
+        public NorthwindDbContextSeeder(INorthwindDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task SeedAllAsync(CancellationToken cancellationToken)
@@ -41,9 +43,11 @@ namespace Northwind.Persistence
         private async Task SeedDefaultUserAsync(CancellationToken cancellationToken)
         {
             var defaultUser = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
-
+            var defaultAdminRole = "administrator";
             if (_userManager.Users.All(u => u.UserName != defaultUser.UserName)) {
                 await _userManager.CreateAsync(defaultUser, "Administrator1!");
+                await _roleManager.CreateAsync(new IdentityRole(defaultAdminRole));
+                await _userManager.AddToRoleAsync(defaultUser, defaultAdminRole);
             }
 
             await _context.SaveChangesAsync(cancellationToken);

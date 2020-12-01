@@ -136,8 +136,7 @@ namespace WebUI.MVC.Controllers.Identity
             return View("~/Views/Identity/ResetPassword.cshtml", resetPasswordModel);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
         {
             var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
@@ -145,8 +144,7 @@ namespace WebUI.MVC.Controllers.Identity
             return Challenge(properties, provider);
         }
 
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpGet, AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null)
         {
             var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
@@ -161,8 +159,7 @@ namespace WebUI.MVC.Controllers.Identity
                 var email = result.Principal.FindFirstValue("email")
                             ?? result.Principal.FindFirstValue(ClaimTypes.Email)
                             ?? result.Principal.FindFirstValue(ClaimTypes.Upn);
-               
-
+                
                 if (email != null) {
                     user = await _userManager.FindByEmailAsync(email);
 
