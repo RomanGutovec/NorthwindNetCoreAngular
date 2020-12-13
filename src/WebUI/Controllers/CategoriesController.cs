@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Application.Categories.Commands.UpdateCategory;
 using Application.Categories.Queries.CategoriesList;
 using Application.Categories.Queries.CategoryDetail;
+using Application.Common.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,8 +44,13 @@ namespace WebUI.Controllers
             await uploadedFile.CopyToAsync(stream);
             updateCommand.Picture = stream.ToArray();
 
-            await _mediator.Send(updateCommand);
-            return NoContent();
+            try {
+                await _mediator.Send(updateCommand);
+                return NoContent();
+            } catch (NotFoundException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

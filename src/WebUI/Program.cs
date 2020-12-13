@@ -24,11 +24,12 @@ namespace WebUI
 
                 try {
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var northwindContext = services.GetRequiredService<NorthwindDbContext>();
 
                     if (northwindContext.Database.IsSqlServer() && !await northwindContext.Database.CanConnectAsync()) {
                         await northwindContext.Database.MigrateAsync();
-                        var seeder = new NorthwindDbContextSeeder(northwindContext, userManager);
+                        var seeder = new NorthwindDbContextSeeder(northwindContext, userManager, roleManager);
                         await seeder.SeedAllAsync(CancellationToken.None);
                     }
 
