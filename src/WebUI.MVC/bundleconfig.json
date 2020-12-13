@@ -1,0 +1,35 @@
+[
+  {
+    "outputFileName": "wwwroot/css/minified/northwindHome.min.css",
+    "inputFiles": [ "wwwroot/css/site.css" ]
+  },
+  {
+    "outputFileName": "wwwroot/css/minified/northwindLayout.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/layout-styles.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/minified/northwindApp.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/minified/product/northwindProductList.min.js",
+    "inputFiles": [
+      "wwwroot/js/product/productList.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

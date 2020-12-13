@@ -64,5 +64,10 @@
 </table>
 
 @section Scripts{
-    <script src="~/js/product/productList.js"></script>
+    <environment include="Development">
+        <script src="~/js/product/productList.js"></script>
+    </environment>
+    <environment include="Development">
+        <script src ="~/js/minified/product/northwindProductList.min.js"></script>
+    </environment>
 }
